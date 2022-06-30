@@ -1,0 +1,29 @@
+
+<nav class="navbar navbar-light bg-dark" style="padding: 0 1rem; box-shadow:  0 0 5px -1px gray;">
+    <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
+        <img src="https://www.bioflex.mx/wp-content/uploads/2020/07/logo_bioflex-01.png"
+            width="120" height="40" class="d-inline-block align-top" alt="">
+        
+    </a>
+
+
+    <div ngbDropdown class="d-inline-block" *ngIf="userLogged|async as user; else LoginButton">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            <img style="border-radius: 100%;" *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            {{user.email}}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem routerLink="/solicitud">Nueva Solicitud</button>
+            <button ngbDropdownItem routerLink="/panelDeControl">Solicitudes</button>
+            <button ngbDropdownItem routerLink="/panelDeControl">Autorizar</button>
+            <button ngbDropdownItem routerLink="/panelDeControl">Monitoreo</button>
+            <button ngbDropdownItem routerLink="/login" (click)="logOut()">Salir</button>
+        </div>
+    </div>
+    <ng-template #LoginButton>
+        <button class="btn btn-primary" routerLink="/login">Ingresar</button>
+    </ng-template>
+
+    
+</nav>
